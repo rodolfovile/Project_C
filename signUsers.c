@@ -65,4 +65,4 @@ void inserirUsuario (char *arquivo) {
     printf("Erro ao tentar fechar arquivo\n");
   }
   
-}/*end void*/
+}/*end void void*/
