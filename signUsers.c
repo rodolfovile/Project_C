@@ -17,7 +17,7 @@ struct Usuario {
 };
 
 // busca por nome do usuario;
-int busca(char *arquivom char nome[]) {
+int buscaPeloNome(char *arquivom char nome[]) {
   struct Usuario user;
   int i = 0;
 
@@ -45,9 +45,34 @@ int busca(char *arquivom char nome[]) {
 
 } /*end function*/
 
+int buscarPeloCodigo(char *arquivo, int codigo) {
+  struct Usuario user;
+  int i = 0;
 
+  FILE *arq;
 
-}
+  if (!(arq = fopen(arquivo, rb))) {
+    printf("Erro ao abrir o arquivo\n");
+    return;
+  }
+
+  fseek(arq, 0, SEEK_SET);
+  fread(&user, sizeof(struct Usuario), 1, arq);
+
+  while (!feof(arq)) {
+    if (user.flag == 1 && user.codigo == codigo) {
+      fclose(arq);
+      return i;
+    } else {
+      ++i;
+      fread(&user, sizeof(struct Usuario), 1, arq)
+    }
+  }
+fclose(arq);
+
+return -1;
+
+} /*end function*/
 
 void inserirUsuario (char *arquivo) {
   system("cls");
