@@ -1,1 +1,2 @@
-project in C, users products
+C project, with registration products.
+
